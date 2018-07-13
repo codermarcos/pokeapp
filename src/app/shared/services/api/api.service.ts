@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { environment } from 'src/environments/environment';
+import { environment } from '../../../../environments/environment';
 import { CacheService } from '../cache/cache.service';
 const { protocol, path, versionPath } = environment.api;
 
@@ -20,14 +20,14 @@ export class ApiService {
     private cache: CacheService
   ) { }
 
-  public get<T>(url: string, params?: Object): Observable<T> {
+  public get<T>(url: string, options?: Object): Observable<T> {
     const cache = this.getCache(url);
 
     if (cache) {
       return of(cache);
     } else {
       return this.http
-        .get<T>(`${this.basePath}${url}`, {})
+        .get<T>(`${this.basePath}${url}`, options)
         .pipe(
           map(
             data => this.cacheMe<T>(url, data)

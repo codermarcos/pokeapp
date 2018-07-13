@@ -1,8 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { SharedModule } from 'src/app/shared/shared.module';
+import { SharedModule } from '../../../shared/shared.module';
 
-import { PokemonService } from 'src/app/pokemon/services/pokemon.service';
-import { ApiService } from 'src/app/shared/services';
+import { PokemonService } from '../../services/pokemon/pokemon.service';
+import { ApiService } from '../../../shared/services';
 
 import { PokemonRootComponent } from './pokemon-root.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';

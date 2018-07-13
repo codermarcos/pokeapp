@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { SharedModule } from 'src/app/shared/shared.module';
+import { SharedModule } from '../../../shared/shared.module';
 
-import { TranslateLoaderModule } from 'src/app/shared/translate/translate-loader.module';
+import { TranslateLoaderModule } from '../../../shared/translate/translate-loader.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SearchBarComponent } from './search-bar.component';
 

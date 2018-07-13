@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { PokemonService } from 'src/app/pokemon/services/pokemon.service';
 import { ActivatedRoute } from '@angular/router';
-import { IPokemon } from '../../../shared/models/pokemon';
+
+import {
+  PokemonService,
+  CharacteristicsService
+} from 'src/app/pokemon/services';
+import { IPokemon } from 'src/app/shared/models/pokemon';
+import { ICharacteristic } from 'src/app/shared/models/characteristics';
 
 @Component({
   selector: 'app-pokemon-detail',
@@ -11,8 +16,10 @@ import { IPokemon } from '../../../shared/models/pokemon';
 export class PokemonDetailComponent implements OnInit {
 
   public pokemon: IPokemon;
+  public characteristic: ICharacteristic;
 
   constructor(
+    private characteristicService: CharacteristicsService,
     private pokemonService: PokemonService,
     private router: ActivatedRoute
   ) { }
@@ -25,10 +32,23 @@ export class PokemonDetailComponent implements OnInit {
   }
 
   searchPokemon(id: string) {
+    this.getPokemon(id);
+    this.getCharacteristic(id);
+  }
+
+  getPokemon(id: string) {
     this.pokemonService
       .getOne(id)
       .subscribe(
-        (data) => this.pokemon = data
+        data => this.pokemon = data
+      );
+  }
+
+  getCharacteristic(id: string) {
+    this.characteristicService
+      .getCharacteristic(id)
+      .subscribe(
+        data => this.characteristic = data
       );
   }
 }

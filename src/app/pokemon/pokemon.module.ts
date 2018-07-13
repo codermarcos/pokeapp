@@ -4,11 +4,18 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { PokemonRoutingModule } from './pokemon-routing.module';
-import { SharedModule } from 'src/app/shared/shared.module';
+import { SharedModule } from '../shared/shared.module';
 
 import { SearchBarComponent } from './components';
-import { PokemonRootComponent } from './pages';
-import { PokemonDetailComponent } from './pages/pokemon-detail/pokemon-detail.component';
+import {
+  PokemonRootComponent,
+  PokemonDetailComponent
+} from './pages';
+
+import {
+  PokemonService,
+  CharacteristicsService
+} from './services';
 
 @NgModule({
   imports: [
@@ -23,6 +30,10 @@ import { PokemonDetailComponent } from './pages/pokemon-detail/pokemon-detail.co
     PokemonRootComponent,
     SearchBarComponent,
     PokemonDetailComponent
+  ],
+  providers: [
+    PokemonService,
+    CharacteristicsService
   ]
 })
 export class PokemonModule { }

@@ -1,6 +1,14 @@
-# Pokeapp
+<p align="center">
+  <a href="https://github.com/codermarcos/pokeapp" target="_blank" rel="noopener noreferrer"><img width="100" src="https://vuejs.org/images/logo.png" alt="Pokeapp"></a>
+</p>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
+<h2 align="center">Pokeapp</h2>
+
+<p lign="center">
+  This project was generated with 
+  <a href="https://github.com/angular/angular-cli" target="_blank" rel="noopener noreferrer">Angular CLI</a> 
+  version 6.0.8.
+</p>
 
 ## Development server
 

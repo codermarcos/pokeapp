@@ -1,8 +1,8 @@
 import { TestBed, inject } from '@angular/core/testing';
-import { SharedModule } from 'src/app/shared/shared.module';
+import { SharedModule } from '../../../shared/shared.module';
 
 import { PokemonService } from './pokemon.service';
-import { ApiService } from 'src/app/shared/services';
+import { ApiService } from '../../../shared/services';
 
 describe('PokemonService', () => {
   beforeEach(() => {

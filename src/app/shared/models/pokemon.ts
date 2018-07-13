@@ -23,11 +23,11 @@ export interface IPokemon {
   game_indices: IGameIndex[];
   held_items: IHeldItem[];
   location_area_encounters: ILocationAreaEncounter[];
-  IMoves: IMove[];
+  moves: IMove[];
   species: IAbility;
-  ISprites: ISprites;
-  IStats: IStat[];
-  ITypes: IType[];
+  sprites: ISprites;
+  stats: IStat[];
+  types: IType[];
 }
 
 interface IType {
@@ -53,11 +53,11 @@ interface ISprites {
 }
 
 interface IMove {
-  IMove: IAbility;
-  version_group_details: Versiongroupdetail[];
+  move: IAbility;
+  version_group_details: IVersionGroupDetail[];
 }
 
-interface Versiongroupdetail {
+interface IVersionGroupDetail {
   level_learned_at: number;
   version_group: IAbility;
   IMove_learn_method: IAbility;
@@ -65,16 +65,16 @@ interface Versiongroupdetail {
 
 interface ILocationAreaEncounter {
   location_area: IAbility;
-  version_details: Versiondetail2[];
+  version_details: ILocationAreaEncounterVersionDetail[];
 }
 
-interface Versiondetail2 {
+interface ILocationAreaEncounterVersionDetail {
   max_chance: number;
-  encounter_details: Encounterdetail[];
+  encounter_details: IEncounterDetail[];
   version: IAbility;
 }
 
-interface Encounterdetail {
+interface IEncounterDetail {
   min_level: number;
   max_level: number;
   condition_values: IAbility[];
@@ -84,10 +84,10 @@ interface Encounterdetail {
 
 interface IHeldItem {
   item: IAbility;
-  version_details: Versiondetail[];
+  version_details: IHeldItemVersionDetail[];
 }
 
-interface Versiondetail {
+interface IHeldItemVersionDetail {
   rarity: number;
   version: IAbility;
 }

@@ -9,10 +9,12 @@ li {
   border-left: none;
   border-radius: 15px;
   position: relative;
-  margin: 2% 5%;
+  margin: 2% 100%;
   padding: 5px;
   top: 1em;
   padding-left: 2em;
+  cursor: pointer;
+  transform: translateX(-100%)
 
   a {
     text-decoration: none;

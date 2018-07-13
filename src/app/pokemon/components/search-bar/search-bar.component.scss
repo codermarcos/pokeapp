@@ -42,14 +42,4 @@
       }
     }
   }
-
-  &__clear {
-    border: 1px solid $gray;
-    border-radius: 50%;
-    position: absolute;
-    height: 48px;
-    width: 48px;
-    transform: translateX(100%);
-    right: -15px;
-  }
 }

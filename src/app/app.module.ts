@@ -7,7 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { TranslateLoaderModule } from './shared/translate/translate-loader.module';
-import { LoaderInterceptor } from './shared/interceptors/loader.interceptor';
 import { PokemonModule } from './pokemon/pokemon.module';
 
 @NgModule({
@@ -19,13 +18,6 @@ import { PokemonModule } from './pokemon/pokemon.module';
     PokemonModule,
     AppRoutingModule,
     TranslateLoaderModule
-  ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: LoaderInterceptor,
-      multi: true
-    }
   ],
   bootstrap: [AppComponent]
 })

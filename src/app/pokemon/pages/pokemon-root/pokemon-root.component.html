@@ -6,7 +6,11 @@
   </div>
 </div>
 <ul class="row center-xs">
-  <li *ngFor="let pokemon of pokemons | async" [@flyInOut] class="col-xs-12 col-sm-6 col-md-3 col-lg-2">
+  <li *ngFor="let pokemon of pokemons; let i = index;" [@flyInOut] class="col-xs-12 col-sm-6 col-md-3 col-lg-3" (click)="search(pokemon.name)">
     <a [routerLink]="['search', pokemon.name]">{{ pokemon.name }}</a>
   </li>
 </ul>
+<nav>
+  <button>previous</button>
+  <button (click)="getPage(currentPage + 1);">next</button>
+</nav>
