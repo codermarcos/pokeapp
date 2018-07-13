@@ -1,0 +1,35 @@
+@import 'variables';
+
+ul {
+  padding: 25px 50px;
+}
+
+li {
+  border: 1px solid $gray;
+  border-left: none;
+  border-radius: 15px;
+  position: relative;
+  margin: 2% 5%;
+  padding: 5px;
+  top: 1em;
+  padding-left: 2em;
+
+  a {
+    text-decoration: none;
+    font-size: 1.5em;
+    color: $gray;
+  }
+
+  &:before {
+    background-image: url(//localhost:4200/images/pokebola.png);
+    background-size: cover;
+    border-radius: 50%;
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    height: 40px;
+    width: 40px;
+    transform: translateY(-50%);
+  }
+}

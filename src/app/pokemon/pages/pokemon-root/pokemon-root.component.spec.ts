@@ -5,6 +5,7 @@ import { PokemonService } from 'src/app/pokemon/services/pokemon.service';
 import { ApiService } from 'src/app/shared/services';
 
 import { PokemonRootComponent } from './pokemon-root.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('RootComponent', () => {
   let component: PokemonRootComponent;
@@ -14,6 +15,9 @@ describe('RootComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         SharedModule.forRoot()
+      ],
+      schemas: [
+        CUSTOM_ELEMENTS_SCHEMA
       ],
       declarations: [ PokemonRootComponent ],
       providers: [PokemonService, ApiService]
