@@ -3,28 +3,28 @@ import { map } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 
 import { ApiService } from 'src/app/shared/services';
-import { IPokemon, IPokemonList } from 'src/app/shared/models/pokemon';
+import { IPokemon, IPokemonCard, IResponsePokemon } from 'src/app/shared/models/pokemon';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PokemonService {
 
-  private all: IPokemonList;
+  private all: Array<IPokemonCard>;
   private one: IPokemon;
 
   constructor(private apiService: ApiService) { }
 
-  public setAll(all: IPokemonList): IPokemonList {
-    return this.all = all;
+  public setAll(all: IResponsePokemon): Array<IPokemonCard> {
+    return this.all = all.results;
   }
 
-  public getAll(): Observable<IPokemonList> {
+  public getAll(): Observable<Array<IPokemonCard>> {
     if (this.all) {
       return of(this.all);
     } else {
       return this.apiService
-        .get<IPokemonList>(`pokemon`)
+        .get<IResponsePokemon>(`pokemon`)
         .pipe(
           map(
             data => this.setAll(data)

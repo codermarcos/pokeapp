@@ -1,7 +1,10 @@
 {
   "pokemon": {
     "search": {
-      "button": "Buscar"
+      "clear": "Limpar busca",
+      "button": "Buscar",
+      "input": "Digite o nome ou id do pokemon",
+      "placeholder": "Digite o nome ou id do pokemon"
     }
   }
 }

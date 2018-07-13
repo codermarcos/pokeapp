@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import {
   HttpRequest,
   HttpHandler,
@@ -17,10 +18,15 @@ export class LoaderInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     this.loadingService.start();
-    next.handle(request)
-      .subscribe(
-        (observer: any) => this.loadingService.end()
+
+    return next.handle(request)
+      .pipe(
+        map(
+          data => {
+            this.loadingService.end();
+            return data;
+          }
+        )
       );
-    return next.handle(request);
   }
 }

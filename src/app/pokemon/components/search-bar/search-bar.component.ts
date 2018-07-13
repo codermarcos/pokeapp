@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -8,9 +8,9 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 })
 export class SearchBarComponent implements OnInit {
 
-  public submit = new EventEmitter();
   public formSearch: FormGroup;
   public inputSearch: FormControl;
+  @Output() submit = new EventEmitter();
 
   constructor(private builder: FormBuilder) { }
 
@@ -19,7 +19,7 @@ export class SearchBarComponent implements OnInit {
   }
 
   submited() {
-    this.submit.emit();
+    this.submit.emit(this.inputSearch.value);
   }
 
   createForm() {

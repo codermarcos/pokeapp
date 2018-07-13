@@ -8,6 +8,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 
 import { SearchBarComponent } from './components';
 import { PokemonRootComponent } from './pages';
+import { PokemonDetailComponent } from './pages/pokemon-detail/pokemon-detail.component';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { PokemonRootComponent } from './pages';
   ],
   declarations: [
     PokemonRootComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    PokemonDetailComponent
   ]
 })
 export class PokemonModule { }

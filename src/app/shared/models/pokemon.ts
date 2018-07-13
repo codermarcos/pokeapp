@@ -1,8 +1,11 @@
-export interface IPokemonList extends Array<IPokemonItem> {
-
+export interface IResponsePokemon {
+  count: number;
+  next: string;
+  previous: string;
+  results: Array<IPokemonCard>;
 }
 
-export interface IPokemonItem {
+export interface IPokemonCard {
   name: string;
   url: string;
 }

@@ -1,63 +1,55 @@
+@import 'variables';
 
-input::-webkit-search-decoration,
-input::-webkit-search-cancel-button {
-	display: none;
+:host {
+  display: flex;
+
 }
 
+.search-box {
+  position: relative;
+  width: 100%;
 
-input[type=search] {
-  -webkit-appearance: textfield;
-	background: #ededed url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
-	border: solid 1px #ccc;
-	padding: 9px 10px 9px 32px;
-	width: 55px;
+  &__input {
+    border: 1px solid $gray;
+    border-radius: 15px;
+    padding: 0 20px;
+    height: 48px;
+    width: 100%;
+  }
 
-	-webkit-border-radius: 10em;
-	-moz-border-radius: 10em;
-	border-radius: 10em;
+  &__button {
+    border-bottom: 1px solid $gray;
+    border-right: 1px solid $gray;
+    border-top: 1px solid $gray;
+    border-left: none;
+    border-bottom-right-radius: 15px;
+    border-top-right-radius: 15px;
+    background-color: #eee;
+    position: absolute;
+    height: 48px;
+    right: 0;
 
-	-webkit-transition: all .5s;
-	-moz-transition: all .5s;
-	transition: all .5s;
-}
-input[type=search]:focus {
-	width: 130px;
-	background-color: #fff;
-	border-color: #66CC75;
+    &:disabled {
+      background-color: #aaa;
+      color: #fff;
+    }
 
-	-webkit-box-shadow: 0 0 5px rgba(109,207,246,.5);
-	-moz-box-shadow: 0 0 5px rgba(109,207,246,.5);
-	box-shadow: 0 0 5px rgba(109,207,246,.5);
-}
+    &:hover {
+      background-color: #ccc;
 
+      &:disabled {
+        background-color: #aaa;
+      }
+    }
+  }
 
-input:-moz-placeholder {
-	color: #999;
-}
-input::-webkit-input-placeholder {
-	color: #999;
-}
-
-/* Demo 2 */
-#demo-2 input[type=search] {
-	width: 15px;
-	padding-left: 10px;
-	color: transparent;
-	cursor: pointer;
-}
-#demo-2 input[type=search]:hover {
-	background-color: #fff;
-}
-#demo-2 input[type=search]:focus {
-	width: 130px;
-	padding-left: 32px;
-	color: #000;
-	background-color: #fff;
-	cursor: auto;
-}
-#demo-2 input:-moz-placeholder {
-	color: transparent;
-}
-#demo-2 input::-webkit-input-placeholder {
-	color: transparent;
+  &__clear {
+    border: 1px solid $gray;
+    border-radius: 50%;
+    position: absolute;
+    height: 48px;
+    width: 48px;
+    transform: translateX(100%);
+    right: -15px;
+  }
 }

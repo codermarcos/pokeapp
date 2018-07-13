@@ -1,11 +1,17 @@
 import { TestBed, async } from '@angular/core/testing';
+import { HttpClientModule } from '@angular/common/http';
 import { RouterTestingModule } from '@angular/router/testing';
+import { TranslateLoaderModule } from 'src/app/shared/translate/translate-loader.module';
+
 import { AppComponent } from './app.component';
+
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        HttpClientModule,
+        RouterTestingModule,
+        TranslateLoaderModule
       ],
       declarations: [
         AppComponent
