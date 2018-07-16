@@ -10,6 +10,22 @@ export interface IPokemonCard {
   url: string;
 }
 
+export interface IPokemonFilter {
+  id?: number;
+  name?: string;
+  photo_default?: string;
+  hp?: number;
+  speed?: number;
+  attack?: number;
+  defense?: number;
+  special_attack?: number;
+  special_defense?: number;
+  height?: number;
+  weight?: number;
+  abilities?: Array<string>;
+  types?: Array<string>;
+}
+
 export interface IPokemon {
   id: number;
   name: string;
@@ -18,7 +34,7 @@ export interface IPokemon {
   is_default: boolean;
   order: number;
   weight: number;
-  abilities: IAbility[];
+  abilities: IAbilityItem[];
   forms: IAbility[];
   game_indices: IGameIndex[];
   held_items: IHeldItem[];
@@ -36,9 +52,9 @@ interface IType {
 }
 
 interface IStat {
-  base_IStat: number;
+  base_stat: number;
   effort: number;
-  IStat: IAbility;
+  stat: IAbility;
 }
 
 interface ISprites {
@@ -97,8 +113,14 @@ interface IGameIndex {
   version: IAbility;
 }
 
-interface IAbility {
+interface IAbilityItem {
+  slot: number;
   is_hidden?: boolean;
+  ability: IAbility;
+}
+
+
+interface IAbility {
   name: string;
   url: string;
 }

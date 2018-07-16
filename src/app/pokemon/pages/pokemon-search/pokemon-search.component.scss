@@ -2,10 +2,10 @@
 @import 'variables';
 
 :host {
+  align-items: flex-start;
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
   justify-content: center;
-  @include size(100vw, 100vh);
+  @include size(100%);
 }
 

@@ -5,7 +5,7 @@ import {
   PokemonService,
   CharacteristicsService
 } from 'src/app/pokemon/services';
-import { IPokemon } from 'src/app/shared/models/pokemon';
+import { IPokemon, IPokemonFilter } from 'src/app/shared/models/pokemon';
 import { ICharacteristic } from 'src/app/shared/models/characteristics';
 
 @Component({
@@ -15,8 +15,8 @@ import { ICharacteristic } from 'src/app/shared/models/characteristics';
 })
 export class PokemonDetailComponent implements OnInit {
 
-  public pokemon: IPokemon;
-  public characteristic: ICharacteristic;
+  private pokemonResponse: IPokemon;
+  private characteristicResponse: ICharacteristic;
 
   constructor(
     private characteristicService: CharacteristicsService,
@@ -36,9 +36,10 @@ export class PokemonDetailComponent implements OnInit {
       .getOne(id)
       .subscribe(
         data => {
-          this.pokemon = data;
-          this.getCharacteristic(this.pokemon.id);
-        }
+          this.pokemonResponse = data;
+          this.getCharacteristic(this.pokemonResponse.id);
+        },
+        erro => console.log(erro)
       );
   }
 
@@ -46,8 +47,53 @@ export class PokemonDetailComponent implements OnInit {
     this.characteristicService
       .getCharacteristic(`${id}`)
       .subscribe(
-        data => this.characteristic = data,
+        data => this.characteristicResponse = data,
         erro => console.log(erro)
       );
+  }
+
+  get pokemon(): IPokemonFilter {
+    const {
+      id,
+      name,
+      weight,
+      height,
+      stats,
+      abilities,
+      sprites: { front_default },
+    } = this.pokemonResponse;
+
+    const hp = stats.find(item => item.stat.name === 'hp').base_stat;
+    const speed = stats.find(item => item.stat.name === 'speed').base_stat;
+    const attack = stats.find(item => item.stat.name === 'attack').base_stat;
+    const defense = stats.find(item => item.stat.name === 'defense').base_stat;
+    const special_attack = stats.find(item => item.stat.name === 'special-attack').base_stat;
+    const special_defense = stats.find(item => item.stat.name === 'special-defense').base_stat;
+    const _abilities = abilities.map(item => `${item.ability.name}${item.is_hidden ? '(hidden)' : ''}`);
+
+    return <IPokemonFilter>{
+      id,
+      hp,
+      name,
+      speed,
+      height,
+      weight,
+      attack,
+      defense,
+      special_attack,
+      special_defense,
+      abilities: _abilities,
+      photo_default: front_default
+    };
+  }
+
+  get characteristic() {
+    const {
+      descriptions
+    } = this.characteristicResponse;
+
+    return {
+      descriptions: descriptions.find(item => item.language.name === 'en')
+    };
   }
 }

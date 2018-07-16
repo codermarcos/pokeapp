@@ -1,19 +1,59 @@
 <main class="container">
   <header class="pokemon">
-    <img class="pokemon__photo" [src]="pokemon?.sprites?.front_default" [alt]="pokemon?.name">
+    <img class="pokemon__photo" [src]="pokemon?.photo_default" [alt]="pokemon?.name">
     <h1 class="pokemon__name">{{ pokemon?.name }}</h1>
     <h2 class="pokemon__id">#{{ pokemon?.id }}</h2>
   </header>
 
   <section>
-    <table>
-      <tr>
-        <td></td>
-        <td>{{ pokemon?.stats | json  }}</td>
-      </tr>
+    <table class="pokemon-table">
+      <tbody>
+        <caption>Informations</caption>
+        <tr>
+          <th>Hp</th>
+          <td>{{ pokemon?.hp }}</td>
+        </tr>
+        <tr>
+          <th>Height</th>
+          <td>{{ pokemon?.height }}</td>
+        </tr>
+        <tr>
+          <th>Weight</th>
+          <td>{{ pokemon?.weight }}</td>
+        </tr>
+
+        <caption>Stats</caption>
+        <tr>
+          <th>Attack</th>
+          <td>{{ pokemon?.attack }}</td>
+        </tr>
+        <tr>
+          <th>Special Attack</th>
+          <td>{{ pokemon?.special_attack }}</td>
+        </tr>
+        <tr>
+          <th>Defence</th>
+          <td>{{ pokemon?.defense }}</td>
+        </tr>
+        <tr>
+          <th>Special Defence</th>
+          <td>{{ pokemon?.special_defense }}</td>
+        </tr>
+        <tr>
+          <th>Speed</th>
+          <td>{{ pokemon?.speed }}</td>
+        </tr>
+
+        <caption>Abilities</caption>
+        <tr>
+          <th>Abilities</th>
+          <td>
+            <ul>
+              <li *ngFor="let ability of pokemon?.abilities">{{ability}}</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
     </table>
   </section>
-  <pre style="overflow: auto; max-height: 400px">
-    {{ pokemon | json }}
-  </pre>
 </main>

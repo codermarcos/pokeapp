@@ -43,7 +43,35 @@ describe('PokemonSearchComponent', () => {
     fixture.detectChanges();
   });
 
+  //
+  // Smoke tests
+  //
+
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should create search', () => {
+    expect(typeof component.search).toEqual('function');
+  });
+
+  it('should create search', () => {
+    expect(typeof component.search).toEqual('function');
+  });
+
+  it('should create getPage', () => {
+    expect(typeof component.getPage).toEqual('function');
+  });
+
+  it('should create makeAnimation', () => {
+    expect(typeof component.makeAnimation).toEqual('function');
+  });
+
+  it('should create next', () => {
+    expect(typeof component.next).toEqual('function');
+  });
+
+  it('should create prev', () => {
+    expect(typeof component.prev).toEqual('function');
   });
 });

@@ -3,7 +3,7 @@
     (click)="prev.emit()"
     [disabled]="pagination?.current === 0"
     class="pagination__button primary"
-    title="{{'pokemon.pagination.next' | translate }}"
+    [title]="'pokemon.pagination.next' | translate"
     [attr.aria-label]="'pokemon.pagination.next' | translate">
     <i class="material-icons">
       keyboard_arrow_left
@@ -14,7 +14,7 @@
     (click)="next.emit()"
     [disabled]="pagination?.max === pagination?.current"
     class="pagination__button primary"
-    title="{{'pokemon.pagination.prev' | translate }}"
+    [title]="'pokemon.pagination.prev' | translate"
     [attr.aria-label]="'pokemon.pagination.prev' | translate">
     <i class="material-icons">
       keyboard_arrow_right

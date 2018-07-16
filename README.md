@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://github.com/codermarcos/pokeapp" target="_blank" rel="noopener noreferrer"><img width="100" src="https://vuejs.org/images/logo.png" alt="Pokeapp"></a>
+  <a href="https://github.com/codermarcos/pokeapp" target="_blank" rel="noopener noreferrer"><img width="100" src="https://github.com/codermarcos/pokeapp/blob/master/src/assets/images/pokebola.png?raw=true" alt="Pokeapp"></a>
 </p>
 
 <h2 align="center">Pokeapp</h2>
