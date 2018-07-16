@@ -28,7 +28,7 @@ describe('PokemonSearchComponent', () => {
         {
           provide: PokemonService,
           useValue: {
-            getAll: () => of(<IResponsePokemon>{ count: 1, results: [ { name: 'bulbasaur' }] })
+            getAll: (limit, offset) => of(<IResponsePokemon>{ count: 1, results: [ { name: 'bulbasaur' }] })
           }
         },
         {
