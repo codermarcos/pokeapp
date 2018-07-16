@@ -1,5 +1,16 @@
 {
   "pokemon": {
+    "hp": "Pontos de vida",
+    "height": "Altura",
+    "weight": "Pontos de vida",
+    "attack": "Ataque",
+    "special_attack": "Ataque especial",
+    "stats": "Status",
+    "defense": "Defesa",
+    "special_defense": "Defesa especial",
+    "speed": "Velocidade",
+    "informations": "Informações",
+    "abilities": "Habilidades",
     "header": {
       "title": "Pokeapp",
       "alt": "Pokeapp logo"

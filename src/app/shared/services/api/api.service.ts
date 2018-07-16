@@ -32,14 +32,18 @@ export class ApiService {
       this.loadingService.end();
       return of(cache);
     } else {
-      return this.http
-        .get<T>(`${this.basePath}${url}`, options)
+      const request = this.http
+        .get<T>(`${this.basePath}${url}`, options);
+
+      request.subscribe(
+        () => this.loadingService.end(),
+        () => this.loadingService.end()
+      );
+
+      return request
         .pipe(
           map(
-            data => {
-              this.loadingService.end();
-              return this.cacheMe<T>(url, data, options);
-            }
+            data => this.cacheMe<T>(url, data, options)
           )
         );
     }
