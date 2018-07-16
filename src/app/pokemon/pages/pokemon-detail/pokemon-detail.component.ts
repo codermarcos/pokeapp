@@ -5,7 +5,7 @@ import {
   PokemonService,
   CharacteristicsService
 } from 'src/app/pokemon/services';
-import { IPokemon, IPokemonFilter } from 'src/app/shared/models/pokemon';
+import { IPokemon, IPokemonFilter, IStat } from 'src/app/shared/models/pokemon';
 import { ICharacteristic } from 'src/app/shared/models/characteristics';
 
 @Component({
@@ -52,6 +52,11 @@ export class PokemonDetailComponent implements OnInit {
       );
   }
 
+  getStat(stats: Array<IStat>, name: string): number {
+    const stat = stats.find(e => e.stat.name === name);
+    return stat ? stat.base_stat || 0 : 0;
+  }
+
   get pokemon(): IPokemonFilter {
     const {
       id,
@@ -60,16 +65,31 @@ export class PokemonDetailComponent implements OnInit {
       height,
       stats,
       abilities,
-      sprites: { front_default },
+      sprites,
     } = this.pokemonResponse;
 
-    const hp = stats.find(item => item.stat.name === 'hp').base_stat;
-    const speed = stats.find(item => item.stat.name === 'speed').base_stat;
-    const attack = stats.find(item => item.stat.name === 'attack').base_stat;
-    const defense = stats.find(item => item.stat.name === 'defense').base_stat;
-    const special_attack = stats.find(item => item.stat.name === 'special-attack').base_stat;
-    const special_defense = stats.find(item => item.stat.name === 'special-defense').base_stat;
-    const _abilities = abilities.map(item => `${item.ability.name}${item.is_hidden ? '(hidden)' : ''}`);
+    let hp,
+      speed,
+      attack,
+      defense,
+      _abilities,
+      special_attack,
+      special_defense;
+
+    if (stats) {
+      hp = this.getStat(stats, 'hp');
+      speed = this.getStat(stats, 'speed');
+      attack = this.getStat(stats, 'attack');
+      defense = this.getStat(stats, 'defense');
+      special_attack = this.getStat(stats, 'special-attack');
+      special_defense = this.getStat(stats, 'special-defense');
+    }
+
+    const photo_default = sprites && sprites.front_default ? sprites.front_default : '';
+
+    if (abilities) {
+      _abilities = abilities.map(item => `${item.ability.name}${item.is_hidden ? '(hidden)' : ''}`);
+    }
 
     return <IPokemonFilter>{
       id,
@@ -80,10 +100,10 @@ export class PokemonDetailComponent implements OnInit {
       weight,
       attack,
       defense,
+      photo_default,
       special_attack,
       special_defense,
-      abilities: _abilities,
-      photo_default: front_default
+      abilities: _abilities
     };
   }
 

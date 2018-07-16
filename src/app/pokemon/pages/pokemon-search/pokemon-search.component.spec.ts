@@ -1,13 +1,14 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { Router } from '@angular/router';
+import { of } from 'rxjs';
 
 import { PokemonService } from 'src/app/pokemon/services/pokemon/pokemon.service';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { ApiService } from 'src/app/shared/services';
 
 import { PokemonSearchComponent } from './pokemon-search.component';
 import { TranslateLoaderModule } from 'src/app/shared/translate/translate-loader.module';
+import { IResponsePokemon } from '../../../shared/models/pokemon';
 
 describe('PokemonSearchComponent', () => {
   let component: PokemonSearchComponent;
@@ -24,12 +25,16 @@ describe('PokemonSearchComponent', () => {
       ],
       declarations: [PokemonSearchComponent],
       providers: [
-        PokemonService,
-        ApiService,
+        {
+          provide: PokemonService,
+          useValue: {
+            getAll: () => of(<IResponsePokemon>{ count: 1, results: [ { name: 'bulbasaur' }] })
+          }
+        },
         {
           provide: Router,
           useValue: {
-            navigate: () => {}
+            navigate: () => { }
           }
         }
       ]

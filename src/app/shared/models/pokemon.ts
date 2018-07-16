@@ -46,18 +46,18 @@ export interface IPokemon {
   types: IType[];
 }
 
-interface IType {
+export interface IType {
   slot: number;
   IType: IAbility;
 }
 
-interface IStat {
+export interface IStat {
   base_stat: number;
   effort: number;
   stat: IAbility;
 }
 
-interface ISprites {
+export interface ISprites {
   back_female: string;
   back_shiny_female: string;
   back_default: string;
@@ -68,29 +68,29 @@ interface ISprites {
   front_shiny: string;
 }
 
-interface IMove {
+export interface IMove {
   move: IAbility;
   version_group_details: IVersionGroupDetail[];
 }
 
-interface IVersionGroupDetail {
+export interface IVersionGroupDetail {
   level_learned_at: number;
   version_group: IAbility;
   IMove_learn_method: IAbility;
 }
 
-interface ILocationAreaEncounter {
+export interface ILocationAreaEncounter {
   location_area: IAbility;
   version_details: ILocationAreaEncounterVersionDetail[];
 }
 
-interface ILocationAreaEncounterVersionDetail {
+export interface ILocationAreaEncounterVersionDetail {
   max_chance: number;
   encounter_details: IEncounterDetail[];
   version: IAbility;
 }
 
-interface IEncounterDetail {
+export interface IEncounterDetail {
   min_level: number;
   max_level: number;
   condition_values: IAbility[];
@@ -98,29 +98,29 @@ interface IEncounterDetail {
   method: IAbility;
 }
 
-interface IHeldItem {
+export interface IHeldItem {
   item: IAbility;
   version_details: IHeldItemVersionDetail[];
 }
 
-interface IHeldItemVersionDetail {
+export interface IHeldItemVersionDetail {
   rarity: number;
   version: IAbility;
 }
 
-interface IGameIndex {
+export interface IGameIndex {
   game_index: number;
   version: IAbility;
 }
 
-interface IAbilityItem {
+export interface IAbilityItem {
   slot: number;
   is_hidden?: boolean;
   ability: IAbility;
 }
 
 
-interface IAbility {
+export interface IAbility {
   name: string;
   url: string;
 }

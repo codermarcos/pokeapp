@@ -3,12 +3,12 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "test:tdd": "ng test",
+    "test:tdd": "ng test --sourceMap=false",
     "start": "ng serve",
     "build": "ng build",
     "e2e": "ng e2e",
     "lint": "ng lint",
-    "test": "ng test --watch=false --code-coverage"
+    "test": "ng test --watch=false --sourceMap=false"
   },
   "pre-commit": ["lint"],
   "private": true,
