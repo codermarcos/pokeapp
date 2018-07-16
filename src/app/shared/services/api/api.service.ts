@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { environment } from '../../../../environments/environment';
-import { CacheService } from '../cache/cache.service';
-const { protocol, path, versionPath } = environment.api;
+import { environment as env } from 'src/environments/environment';
+import { CacheService } from 'src/app/shared/services/cache/cache.service';
+import { LoadingService } from 'src/app/shared/services/loading/loading.service';
+
+const { protocol, path, versionPath } = env.api;
 
 @Injectable({
   providedIn: 'root'
@@ -17,31 +19,38 @@ export class ApiService {
 
   constructor(
     private http: HttpClient,
-    private cache: CacheService
+    private cache: CacheService,
+    private loadingService: LoadingService
   ) { }
 
   public get<T>(url: string, options?: Object): Observable<T> {
-    const cache = this.getCache(url);
+    this.loadingService.start();
+
+    const cache = this.getCache(url, options);
 
     if (cache) {
+      this.loadingService.end();
       return of(cache);
     } else {
       return this.http
         .get<T>(`${this.basePath}${url}`, options)
         .pipe(
           map(
-            data => this.cacheMe<T>(url, data)
+            data => {
+              this.loadingService.end();
+              return this.cacheMe<T>(url, data, options);
+            }
           )
         );
     }
   }
 
-  private cacheMe<T>(url: string, data: T): T {
-    this.cache.setStorage(url, data);
+  private cacheMe<T>(url: string, data: T, params?: Object): T {
+    this.cache.setStorage(url, data, params);
     return data;
   }
 
-  private getCache(url: string) {
-    return this.cache.getStorage(url);
+  private getCache(url: string, params?: Object) {
+    return this.cache.getStorage(url, params);
   }
 }

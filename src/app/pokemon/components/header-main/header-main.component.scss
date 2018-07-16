@@ -1,0 +1,14 @@
+:host {
+  width: 100%;
+}
+
+.header-main {
+  text-align: center;
+  &__image {
+    width: 10em;
+  }
+  &__title {
+    font-size: 5em;
+    margin: 25px 0;
+  }
+}

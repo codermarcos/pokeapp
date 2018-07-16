@@ -1,21 +1,24 @@
 <form
   [formGroup]="formSearch"
   (ngSubmit)="submited()"
-  class="search-box">
+  class="search-box"
+  role="search">
   <input
     formControlName="search"
     autocomplete="on"
+    autofocus
     type="search"
     id="search"
     class="search-box__input"
-    placeholder="{{'pokemon.search.placeholder' | translate }}"
-    title="{{'pokemon.search.placeholder' | translate }}">
+    placeholder="'pokemon.search.placeholder' | translate"
+    [title]="'pokemon.search.placeholder' | translate"
+    [attr.aria-label]="'pokemon.search.placeholder' | translate">
 
   <button
     type="submit"
-    class="search-box__button"
+    class="search-box__button primary"
     [disabled]="formSearch.invalid"
-    title="{{'pokemon.search.button' | translate }}">
+    [title]="'pokemon.search.button' | translate">
     <i class="material-icons">search</i>
   </button>
 </form>

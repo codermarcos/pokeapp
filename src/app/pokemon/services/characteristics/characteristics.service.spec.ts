@@ -1,11 +1,16 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { CharacteristicsService } from './characteristics.service';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { ApiService } from 'src/app/shared/services/api/api.service';
 
 describe('CharacteristicsService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [CharacteristicsService]
+      imports: [
+        SharedModule.forRoot()
+      ],
+      providers: [CharacteristicsService, ApiService]
     });
   });
 

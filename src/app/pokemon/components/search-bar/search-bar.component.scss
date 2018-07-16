@@ -2,7 +2,7 @@
 
 :host {
   display: flex;
-
+  width: 100%;
 }
 
 .search-box {
@@ -10,36 +10,24 @@
   width: 100%;
 
   &__input {
-    border: 1px solid $gray;
+    border: 1px solid currentColor;
     border-radius: 15px;
+    color: $search-font-color;
     padding: 0 20px;
-    height: 48px;
+    height: $input-size;
     width: 100%;
   }
 
   &__button {
-    border-bottom: 1px solid $gray;
-    border-right: 1px solid $gray;
-    border-top: 1px solid $gray;
+    border-bottom: 1px solid $search-font-color;
+    border-right: 1px solid $search-font-color;
+    border-top: 1px solid $search-font-color;
     border-left: none;
     border-bottom-right-radius: 15px;
     border-top-right-radius: 15px;
-    background-color: #eee;
+    color: $btn-primary-font-color;
     position: absolute;
-    height: 48px;
+    height: $input-size;
     right: 0;
-
-    &:disabled {
-      background-color: #aaa;
-      color: #fff;
-    }
-
-    &:hover {
-      background-color: #ccc;
-
-      &:disabled {
-        background-color: #aaa;
-      }
-    }
   }
 }

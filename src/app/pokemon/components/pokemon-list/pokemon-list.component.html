@@ -1,0 +1,5 @@
+<ul class="pokemons" role="list">
+  <li *ngFor="let pokemon of pokemons" (click)="click.emit(pokemon.name)" [@flyInOut] class="pokemons__pokemon" role="listitem">
+    {{ pokemon.name }}
+  </li>
+</ul>

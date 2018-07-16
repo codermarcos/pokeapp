@@ -1,1 +1,36 @@
+/*
+
+  Colors
+
+*/
 $gray: #646464;
+$blue: #3b4cca;
+$white: #ffffff;
+
+$btn-primary-color: $blue;
+$btn-praimry-hover-color: lighten($blue, 5%);
+$btn-praimry-disabled-color: lighten($blue, 25%);
+$btn-primary-font-color: $white;
+
+$search-btn-color: $blue;
+$search-font-color: $gray;
+
+$pagination-btn-color: $blue;
+$pagination-font-color: $white;
+
+/*
+
+  Images
+
+*/
+
+$pokebola-image: url(//localhost:4200/images/pokebola.png);
+
+/*
+
+  Sizes
+
+*/
+
+$input-size: 48px;
+$button-size: 50px;

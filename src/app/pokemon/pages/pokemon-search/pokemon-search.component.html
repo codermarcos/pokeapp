@@ -1,0 +1,6 @@
+<main class="container">
+  <app-header-main></app-header-main>
+  <app-search-bar (submit)="search($event)"></app-search-bar>
+  <app-pokemon-list [pokemons]="pokemons" (click)="search($event)"></app-pokemon-list>
+  <app-pagination [pagination]="pagination" (next)="next()" (prev)="prev()"></app-pagination>
+</main>

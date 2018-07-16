@@ -1,0 +1,38 @@
+@import 'mixins';
+@import 'variables';
+
+:host {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+  .pagination-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .pagination {
+    &__button {
+      border: none;
+      border-radius: 50%;
+      color: $pagination-font-color;
+      cursor: pointer;
+      font-size: 2em;
+      @include size($button-size);
+
+      &:disabled {
+        cursor: not-allowed;
+      }
+    }
+    &__informations {
+      line-height: $button-size;
+      font-size: 1.5em;
+      b {
+        font-weight: bold;
+        font-size: 3em;
+        line-height: 0;
+      }
+    }
+  }
+}

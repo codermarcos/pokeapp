@@ -5,16 +5,16 @@ import { Injectable } from '@angular/core';
 })
 export class CacheService {
 
-  setStorage(key: string, value: any) {
+  setStorage(key: string, value: any, params?: any) {
     const now = new Date();
     const expireIn = new Date(now);
     expireIn.setMinutes(now.getMinutes() + 30);
-    localStorage.setItem(key, JSON.stringify({ value, expireIn }));
+    localStorage.setItem(JSON.stringify({ key, params }), JSON.stringify({ value, params, expireIn }));
   }
 
-  getStorage(key: string) {
+  getStorage(key: string, params?: any) {
     const now = new Date();
-    const storage = localStorage.getItem(key);
+    const storage = localStorage.getItem(JSON.stringify({ key, params }));
     if (storage) {
       const cache = JSON.parse(storage);
 

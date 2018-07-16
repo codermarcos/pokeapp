@@ -1,0 +1,22 @@
+@import 'variables';
+
+button {
+
+  &.primary {
+    background-color: $btn-primary-color;
+
+    &:disabled {
+      background-color: $btn-praimry-disabled-color;
+      color: $btn-primary-font-color;
+    }
+
+    &:hover {
+      background-color: $btn-praimry-hover-color;
+
+      &:disabled {
+        cursor: not-allowed;
+        background-color: $btn-praimry-disabled-color;
+      }
+    }
+  }
+}

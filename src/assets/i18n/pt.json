@@ -1,10 +1,19 @@
 {
   "pokemon": {
+    "header": {
+      "title": "Pokeapp",
+      "alt": "Pokeapp logo"
+    },
     "search": {
       "clear": "Limpar busca",
       "button": "Buscar",
       "input": "Digite o nome ou id do pokemon",
       "placeholder": "Digite o nome ou id do pokemon"
+    },
+    "pagination": {
+      "title": "Paginação dos pokemons",
+      "next": "Proxima pagina",
+      "prev": "Pagina anterior"
     }
   }
 }

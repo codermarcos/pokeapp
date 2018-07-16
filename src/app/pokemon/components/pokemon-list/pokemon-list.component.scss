@@ -1,0 +1,32 @@
+@import 'variables';
+@import 'mixins';
+
+.pokemons {
+  min-height: 495px;
+  &__pokemon {
+    margin-bottom: 50px;
+    font-size: 1.5em;
+    color: $gray;
+    cursor: pointer;
+    border: 1px solid currentColor;
+    border-left: none;
+    border-radius: 15px;
+    position: relative;
+    padding: 10px;
+    padding-left: 4em;
+    top: 1em;
+    transform: translateX(0);
+
+    &:before {
+      background-image: $pokebola-image;
+      background-size: cover;
+      border-radius: 50%;
+      content: "";
+      left: -5px;
+      position: absolute;
+      @include size($button-size);
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+}

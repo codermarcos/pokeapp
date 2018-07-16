@@ -1,0 +1,23 @@
+<nav class="pagination-container" role="navigation" [attr.aria-label]="'pokemon.pagination.title' | translate">
+  <button
+    (click)="prev.emit()"
+    [disabled]="pagination?.current === 0"
+    class="pagination__button primary"
+    title="{{'pokemon.pagination.next' | translate }}"
+    [attr.aria-label]="'pokemon.pagination.next' | translate">
+    <i class="material-icons">
+      keyboard_arrow_left
+    </i>
+  </button>
+  <span class="pagination__informations">{{pagination?.current}} <b>...</b> {{pagination?.max}}</span>
+  <button
+    (click)="next.emit()"
+    [disabled]="pagination?.max === pagination?.current"
+    class="pagination__button primary"
+    title="{{'pokemon.pagination.prev' | translate }}"
+    [attr.aria-label]="'pokemon.pagination.prev' | translate">
+    <i class="material-icons">
+      keyboard_arrow_right
+    </i>
+  </button>
+</nav>

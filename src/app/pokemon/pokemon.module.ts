@@ -6,9 +6,15 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { PokemonRoutingModule } from './pokemon-routing.module';
 import { SharedModule } from '../shared/shared.module';
 
-import { SearchBarComponent } from './components';
 import {
-  PokemonRootComponent,
+  HeaderMainComponent,
+  SearchBarComponent,
+  PaginationComponent,
+  PokemonListComponent,
+} from './components';
+
+import {
+  PokemonSearchComponent,
   PokemonDetailComponent
 } from './pages';
 
@@ -27,9 +33,12 @@ import {
     SharedModule.forRoot()
   ],
   declarations: [
-    PokemonRootComponent,
+    PokemonSearchComponent,
     SearchBarComponent,
-    PokemonDetailComponent
+    PokemonDetailComponent,
+    PokemonListComponent,
+    PaginationComponent,
+    HeaderMainComponent
   ],
   providers: [
     PokemonService,

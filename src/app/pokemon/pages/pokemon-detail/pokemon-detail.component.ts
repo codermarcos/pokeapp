@@ -21,34 +21,33 @@ export class PokemonDetailComponent implements OnInit {
   constructor(
     private characteristicService: CharacteristicsService,
     private pokemonService: PokemonService,
-    private router: ActivatedRoute
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
-    this.router.paramMap
+    this.route.paramMap
       .subscribe(
-        params => this.searchPokemon(params.get('id'))
+        params => this.getPokemon(params.get('id'))
       );
-  }
-
-  searchPokemon(id: string) {
-    this.getPokemon(id);
-    this.getCharacteristic(id);
   }
 
   getPokemon(id: string) {
     this.pokemonService
       .getOne(id)
       .subscribe(
-        data => this.pokemon = data
+        data => {
+          this.pokemon = data;
+          this.getCharacteristic(this.pokemon.id);
+        }
       );
   }
 
-  getCharacteristic(id: string) {
+  getCharacteristic(id: number) {
     this.characteristicService
-      .getCharacteristic(id)
+      .getCharacteristic(`${id}`)
       .subscribe(
-        data => this.characteristic = data
+        data => this.characteristic = data,
+        erro => console.log(erro)
       );
   }
 }
