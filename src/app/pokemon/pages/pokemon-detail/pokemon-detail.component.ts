@@ -5,8 +5,8 @@ import {
   PokemonService,
   CharacteristicsService
 } from 'src/app/pokemon/services';
-import { IPokemon, IPokemonFilter, IStat } from 'src/app/shared/models/pokemon';
 import { ICharacteristic } from 'src/app/shared/models/characteristics';
+import { IPokemon, IPokemonFilter, IStat } from 'src/app/shared/models/pokemon';
 
 @Component({
   selector: 'app-pokemon-detail',
@@ -58,53 +58,57 @@ export class PokemonDetailComponent implements OnInit {
   }
 
   get pokemon(): IPokemonFilter {
-    const {
-      id,
-      name,
-      weight,
-      height,
-      stats,
-      abilities,
-      sprites,
-    } = this.pokemonResponse;
+    if (!this.pokemonResponse) {
+      return {};
+    } else {
+      const {
+        id,
+        name,
+        weight,
+        height,
+        stats,
+        abilities,
+        sprites,
+      } = this.pokemonResponse;
 
-    let hp,
-      speed,
-      attack,
-      defense,
-      _abilities,
-      special_attack,
-      special_defense;
+      let hp,
+        speed,
+        attack,
+        defense,
+        _abilities,
+        special_attack,
+        special_defense;
 
-    if (stats) {
-      hp = this.getStat(stats, 'hp');
-      speed = this.getStat(stats, 'speed');
-      attack = this.getStat(stats, 'attack');
-      defense = this.getStat(stats, 'defense');
-      special_attack = this.getStat(stats, 'special-attack');
-      special_defense = this.getStat(stats, 'special-defense');
+      if (stats) {
+        hp = this.getStat(stats, 'hp');
+        speed = this.getStat(stats, 'speed');
+        attack = this.getStat(stats, 'attack');
+        defense = this.getStat(stats, 'defense');
+        special_attack = this.getStat(stats, 'special-attack');
+        special_defense = this.getStat(stats, 'special-defense');
+      }
+
+      const photo_default = sprites && sprites.front_default ? sprites.front_default : '';
+
+      if (abilities) {
+        _abilities = abilities.map(item => `${item.ability.name}${item.is_hidden ? '(hidden)' : ''}`);
+      }
+
+      return <IPokemonFilter>{
+        id,
+        hp,
+        name,
+        speed,
+        height,
+        weight,
+        attack,
+        defense,
+        photo_default,
+        special_attack,
+        special_defense,
+        abilities: _abilities
+      };
     }
-
-    const photo_default = sprites && sprites.front_default ? sprites.front_default : '';
-
-    if (abilities) {
-      _abilities = abilities.map(item => `${item.ability.name}${item.is_hidden ? '(hidden)' : ''}`);
-    }
-
-    return <IPokemonFilter>{
-      id,
-      hp,
-      name,
-      speed,
-      height,
-      weight,
-      attack,
-      defense,
-      photo_default,
-      special_attack,
-      special_defense,
-      abilities: _abilities
-    };
   }
 
   get characteristic() {

@@ -4,10 +4,11 @@
 
 <h2 align="center">Pokeapp</h2>
 
-<p lign="center">
+<p align="center">
   This project was generated with 
   <a href="https://github.com/angular/angular-cli" target="_blank" rel="noopener noreferrer">Angular CLI</a> 
-  version 6.0.8.
+  version 6.0.8. Look demo
+  <a href="http://pokeapp.codermarcos.com">http://pokeapp.codermarcos.com</a> 
 </p>
 
 ## Development server
