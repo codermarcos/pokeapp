@@ -1,0 +1,30 @@
+{
+
+  "pokemon": {
+    "hp": "Heath points",
+    "height": "Height",
+    "weight": "Weight",
+    "attack": "Attack",
+    "special_attack": "Special attack",
+    "stats": "Stats",
+    "defense": "denfese",
+    "special_defense": "Special defense",
+    "speed": "Speed",
+    "informations": "Informations",
+    "abilities": "Abilities",
+    "header": {
+      "title": "Pokeapp",
+      "alt": "Pokeapp image"
+    },
+    "search": {
+      "button": "Search",
+      "input": "Type name or id of pokemon",
+      "placeholder": "Type name or id of pokemon"
+    },
+    "pagination": {
+      "title": "Pagination pokemons",
+      "next": "Next page",
+      "prev": "Previous page"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "pokemon": {
+    "hp": "Pontos de vida",
+    "height": "Altura",
+    "weight": "Pontos de vida",
+    "attack": "Ataque",
+    "special_attack": "Ataque especial",
+    "stats": "Status",
+    "defense": "Defesa",
+    "special_defense": "Defesa especial",
+    "speed": "Velocidade",
+    "informations": "Informações",
+    "abilities": "Habilidades",
+    "header": {
+      "title": "Pokeapp",
+      "alt": "Pokeapp logo"
+    },
+    "search": {
+      "clear": "Limpar busca",
+      "button": "Buscar",
+      "input": "Digite o nome ou id do pokemon",
+      "placeholder": "Digite o nome ou id do pokemon"
+    },
+    "pagination": {
+      "title": "Paginação dos pokemons",
+      "next": "Proxima pagina",
+      "prev": "Pagina anterior"
+    }
+  }
+}
