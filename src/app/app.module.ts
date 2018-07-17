@@ -1,13 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 
+
+
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppRoutingModule } from './app-routing.module';
-
-import { AppComponent } from './app.component';
-
-import { TranslateLoaderModule } from './shared/translate/translate-loader.module';
 import { PokemonModule } from './pokemon/pokemon.module';
+import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,13 @@ import { PokemonModule } from './pokemon/pokemon.module';
     BrowserModule,
     PokemonModule,
     AppRoutingModule,
-    TranslateLoaderModule
+    TranslateModule.forRoot({
+      loader: {
+        useFactory: (http: HttpClient) => new TranslateHttpLoader(http, './i18n/', '.json'),
+        provide: TranslateLoader,
+        deps: [HttpClient]
+      }
+    })
   ],
   bootstrap: [AppComponent]
 })
