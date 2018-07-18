@@ -1,7 +1,9 @@
+import { HttpClient } from '@angular/common/http';
 import { TestBed, async } from '@angular/core/testing';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterTestingModule } from '@angular/router/testing';
-import { TranslateLoaderModule } from './shared/translate/translate-loader.module';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 
 import { AppComponent } from './app.component';
 
@@ -11,7 +13,13 @@ describe('AppComponent', () => {
       imports: [
         HttpClientModule,
         RouterTestingModule,
-        TranslateLoaderModule
+        TranslateModule.forRoot({
+          loader: {
+            useFactory: (http: HttpClient) => new TranslateHttpLoader(http, './i18n/', '.json'),
+            provide: TranslateLoader,
+            deps: [HttpClient]
+          }
+        })
       ],
       declarations: [
         AppComponent

@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { of } from 'rxjs';
 
@@ -7,8 +8,11 @@ import { PokemonService } from 'src/app/pokemon/services/pokemon/pokemon.service
 import { SharedModule } from 'src/app/shared/shared.module';
 
 import { PokemonSearchComponent } from './pokemon-search.component';
-import { TranslateLoaderModule } from 'src/app/shared/translate/translate-loader.module';
-import { IResponsePokemon } from '../../../shared/models/pokemon';
+
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { IResponsePokemon } from 'src/app/shared/models/pokemon';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+
 
 describe('PokemonSearchComponent', () => {
   let component: PokemonSearchComponent;
@@ -17,8 +21,15 @@ describe('PokemonSearchComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        TranslateLoaderModule,
-        SharedModule.forRoot()
+        HttpClientModule,
+        SharedModule.forRoot(),
+        TranslateModule.forRoot({
+          loader: {
+            useFactory: (http: HttpClient) => new TranslateHttpLoader(http, './i18n/', '.json'),
+            provide: TranslateLoader,
+            deps: [HttpClient]
+          }
+        })
       ],
       schemas: [
         CUSTOM_ELEMENTS_SCHEMA

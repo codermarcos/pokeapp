@@ -1,16 +1,18 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { of } from 'rxjs';
 
-import { SharedModule } from 'src/app/shared/shared.module';
-import { PokemonDetailComponent } from './pokemon-detail.component';
-import { TranslateLoaderModule } from 'src/app/shared/translate/translate-loader.module';
+
 import { PokemonService, CharacteristicsService } from 'src/app/pokemon/services';
+import { ICharacteristic } from 'src/app/shared/models/characteristics';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { PokemonDetailComponent } from './pokemon-detail.component';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { SharedModule } from 'src/app/shared/shared.module';
 import { IPokemon } from 'src/app/shared/models/pokemon';
-import { ICharacteristic } from '../../../shared/models/characteristics';
 
 describe('PokemonDetailComponent', () => {
   let component: PokemonDetailComponent;
@@ -21,8 +23,14 @@ describe('PokemonDetailComponent', () => {
       imports: [
         HttpClientModule,
         HttpClientTestingModule,
-        TranslateLoaderModule,
-        SharedModule.forRoot()
+        SharedModule.forRoot(),
+        TranslateModule.forRoot({
+          loader: {
+            useFactory: (http: HttpClient) => new TranslateHttpLoader(http, './i18n/', '.json'),
+            provide: TranslateLoader,
+            deps: [HttpClient]
+          }
+        })
       ],
       declarations: [PokemonDetailComponent],
       schemas: [

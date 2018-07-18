@@ -1,9 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { SharedModule } from '../../../shared/shared.module';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { SharedModule } from 'src/app/shared/shared.module';
 
-import { TranslateLoaderModule } from '../../../shared/translate/translate-loader.module';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SearchBarComponent } from './search-bar.component';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 
 describe('SearchBarComponent', () => {
   let component: SearchBarComponent;
@@ -13,9 +15,16 @@ describe('SearchBarComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         FormsModule,
+        HttpClientModule,
         ReactiveFormsModule,
-        TranslateLoaderModule,
-        SharedModule.forRoot()
+        SharedModule.forRoot(),
+        TranslateModule.forRoot({
+          loader: {
+            useFactory: (http: HttpClient) => new TranslateHttpLoader(http, './i18n/', '.json'),
+            provide: TranslateLoader,
+            deps: [HttpClient]
+          }
+        })
       ],
       declarations: [ SearchBarComponent ]
     })

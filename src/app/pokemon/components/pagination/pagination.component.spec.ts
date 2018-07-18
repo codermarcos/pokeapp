@@ -1,8 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
-import { PaginationComponent } from './pagination.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { TranslateLoaderModule } from 'src/app/shared/translate/translate-loader.module';
+import { PaginationComponent } from './pagination.component';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 
 describe('PaginationComponent', () => {
   let component: PaginationComponent;
@@ -11,8 +13,15 @@ describe('PaginationComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        TranslateLoaderModule,
-        SharedModule.forRoot()
+        HttpClientModule,
+        SharedModule.forRoot(),
+        TranslateModule.forRoot({
+          loader: {
+            useFactory: (http: HttpClient) => new TranslateHttpLoader(http, './i18n/', '.json'),
+            provide: TranslateLoader,
+            deps: [HttpClient]
+          }
+        })
       ],
       declarations: [PaginationComponent]
     })

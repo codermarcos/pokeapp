@@ -1,8 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
-import { HeaderMainComponent } from './header-main.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { TranslateLoaderModule } from 'src/app/shared/translate/translate-loader.module';
+import { HeaderMainComponent } from './header-main.component';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 
 describe('HeaderMainComponent', () => {
   let component: HeaderMainComponent;
@@ -11,12 +13,19 @@ describe('HeaderMainComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        TranslateLoaderModule,
-        SharedModule.forRoot()
+        HttpClientModule,
+        SharedModule.forRoot(),
+        TranslateModule.forRoot({
+          loader: {
+            useFactory: (http: HttpClient) => new TranslateHttpLoader(http, './i18n/', '.json'),
+            provide: TranslateLoader,
+            deps: [HttpClient]
+          }
+        })
       ],
-      declarations: [ HeaderMainComponent ]
+      declarations: [HeaderMainComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

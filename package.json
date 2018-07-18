@@ -10,7 +10,9 @@
     "lint": "ng lint",
     "test": "ng test --watch=false --sourceMap=false"
   },
-  "pre-commit": ["lint"],
+  "pre-commit": [
+    "lint"
+  ],
   "private": true,
   "dependencies": {
     "@angular/animations": "^6.0.3",
