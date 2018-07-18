@@ -3,9 +3,11 @@
 </p>
 
 <h2 align="center">Pokeapp</h2>
-https://travis-ci.org/codermarcos/pokeapp.svg?branch=master
 <p align="center">
-  <img width="100" src="https://travis-ci.org/codermarcos/pokeapp.svg?branch=master" alt="travis"
+  <a class="badge-align" href="https://www.codacy.com/app/codermarcos/pokeapp?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=codermarcos/pokeapp&amp;utm_campaign=Badge_Grade"><img src="https://api.codacy.com/project/badge/Grade/803ae4a7f73347d18f5a7b50a8ccfe36"/></a>
+  
+  <a class="badge-align" href="https://travis-ci.org/codermarcos/pokeapp">
+  <img width="100" src="https://travis-ci.org/codermarcos/pokeapp.svg?branch=master" alt="travis"></a>
 </p>
 
 <p align="center">
