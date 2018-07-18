@@ -3,6 +3,10 @@
 </p>
 
 <h2 align="center">Pokeapp</h2>
+https://travis-ci.org/codermarcos/pokeapp.svg?branch=master
+<p align="center">
+  <img width="100" src="https://travis-ci.org/codermarcos/pokeapp.svg?branch=master" alt="travis"
+</p>
 
 <p align="center">
   This project was generated with 
