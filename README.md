@@ -4,7 +4,10 @@
 
 <h2 align="center">Pokeapp</h2>
 <p align="center">
-  <a class="badge-align" href="https://www.codacy.com/app/codermarcos/pokeapp?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=codermarcos/pokeapp&amp;utm_campaign=Badge_Grade"><img src="https://api.codacy.com/project/badge/Grade/803ae4a7f73347d18f5a7b50a8ccfe36"/></a>
+  <a class="badge-align" href="https://www.codacy.com/app/codermarcos/pokeapp?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=codermarcos/pokeapp&amp;utm_campaign=Badge_Grade"><img  width="100" src="https://api.codacy.com/project/badge/Grade/803ae4a7f73347d18f5a7b50a8ccfe36" alt="codacy"/></a>
+
+  <a class="badge-align" href="http://pokeapp.codermarcos.com/coverage/index.html">
+  <img width="100" src="http://pokeapp.codermarcos.com/coverage/badge.svg" alt="coverage"></a>
   
   <a class="badge-align" href="https://travis-ci.org/codermarcos/pokeapp">
   <img width="100" src="https://travis-ci.org/codermarcos/pokeapp.svg?branch=master" alt="travis"></a>

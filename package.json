@@ -9,7 +9,8 @@
     "e2e": "ng e2e",
     "lint": "ng lint",
     "test:tdd": "ng test --sourceMap=false",
-    "test": "ng test --watch=false --sourceMap=false"
+    "test": "ng test --watch=false --sourceMap=false --code-coverage",
+    "test:badge": "lcov-badge-generator ./docs/coverage/lcov.info -o ./docs/coverage/badge.svg"
   },
   "pre-commit": [
     "lint"
@@ -28,6 +29,7 @@
     "@ngx-translate/core": "^10.0.2",
     "@ngx-translate/http-loader": "^3.0.1",
     "core-js": "^2.5.4",
+    "lcov-badge-generator": "^1.0.5",
     "pre-commit": "^1.2.2",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"
