@@ -17,7 +17,7 @@
   This project was generated with 
   <a href="https://github.com/angular/angular-cli" target="_blank" rel="noopener noreferrer">Angular CLI</a> 
   version 6.0.8. Look demo
-  <a href="http://pokeapp.codermarcos.com">http://pokeapp.codermarcos.com</a> 
+  <a href="https://codermarcos.github.io/pokeapp/.">https://codermarcos.github.io/pokeapp</a> 
 </p>
 
 ## Development server
